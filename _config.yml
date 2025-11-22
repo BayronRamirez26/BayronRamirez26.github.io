@@ -6,9 +6,5 @@ url: ""
 theme: minima   
 markdown: kramdown
 
-author:
-  name: "Bayron Ramirez"
-  id: "C06334"
-
 plugins:
   - jekyll-feed
