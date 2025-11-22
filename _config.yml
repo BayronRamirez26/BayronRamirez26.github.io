@@ -1,0 +1,14 @@
+title: "Blog Proyecto 1 – Computación y Sociedad"
+description: "Análisis de noticias tecnológicas y su impacto en la sociedad costarricense"
+baseurl: "" 
+url: ""     
+
+theme: minima   
+markdown: kramdown
+
+author:
+  name: "Bayron Ramirez"
+  id: "C06334"
+
+plugins:
+  - jekyll-feed
