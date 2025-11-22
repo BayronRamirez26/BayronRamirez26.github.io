@@ -5,33 +5,44 @@ layout: default
 <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 
 <div class="home-container">
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">{{ site.title }}</h1>
-      <p class="hero-description">{{ site.description }}</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">{{ site.title }}</h1>
+            <p class="hero-description">{{ site.description }}</p>
+            <a href="#posts" class="btn btn-primary">Explorar Artículos</a>
+        </div>
+    </section>
+
+    <div class="content-wrapper" id="posts">
+        <section class="intro-content">
+            {{ content }}
+        </section>
+
+        <div class="section-header">
+            <h2 class="section-title">Últimos Análisis</h2>
+            <p class="section-subtitle">Explorando el impacto de la tecnología en la sociedad</p>
+        </div>
+
+        <section class="posts-grid">
+            {% for post in site.posts %}
+            <article class="post-card">
+                <a href="{{ post.url | relative_url }}" class="post-card-link">
+                    <div class="post-card-content">
+                        <div class="post-card-header">
+                            <span class="post-tag">Tecnología</span>
+                            <span class="post-date">{{ post.date | date: "%d %b" }}</span>
+                        </div>
+                        <h3 class="post-title">{{ post.title }}</h3>
+                        <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+                        <span class="read-more">Leer más <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"></line>
+                                <polyline points="12 5 19 12 12 19"></polyline>
+                            </svg></span>
+                    </div>
+                </a>
+            </article>
+            {% endfor %}
+        </section>
     </div>
-  </section>
-
-  <div class="content-wrapper">
-    <section class="intro-content">
-      {{ content }}
-    </section>
-
-    <h2 class="section-title">📰 Análisis de Noticias</h2>
-    <section class="posts-grid">
-      {% for post in site.posts %}
-        <a href="{{ post.url | relative_url }}" class="post-card">
-          <div class="post-card-content">
-            <span class="post-tag">Tecnología y Sociedad</span>
-            <h3 class="post-title">{{ post.title }}</h3>
-            <div class="post-meta">
-              <span class="post-date">{{ post.date | date: "%d/%m/%Y" }}</span>
-            </div>
-            <p class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 15 }}</p>
-            <span class="read-more">Leer análisis &rarr;</span>
-          </div>
-        </a>
-      {% endfor %}
-    </section>
-  </div>
 </div>
